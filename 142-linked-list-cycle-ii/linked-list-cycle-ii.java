@@ -11,56 +11,26 @@
  */
 public class Solution {
     public ListNode detectCycle(ListNode head) {
-        int length =0;
-        ListNode fast = head;
-        ListNode slow = head;
-
-        while(fast != null && fast.next != null){
-            fast = fast.next.next;
-            slow = slow.next;
-            if(fast == slow){
-                length = lengthCycle(slow);
-                break;
-            }
-        }
-        if(length == 0){
+        if(head == null || head.next== null){
             return null;
         }
-
-        ListNode f = head;
-        ListNode  s = head;
-
-        while(length>0){
-            s= s.next;
-            length--;
-        }
-
-        while(f!= s){
-            f = f.next;
-            s= s.next;
-        }
-        return s;
-
-
-        
-    }
-    public int lengthCycle(ListNode head){
         ListNode fast = head;
         ListNode slow = head;
         while(fast != null && fast.next != null){
             fast = fast.next.next;
             slow= slow.next;
-            if(fast == slow){
-                ListNode temp = slow;
-                int length =0;
-                do{
-                    temp = temp.next;
-                    length++;
-                }while(temp!=slow);
-                return length;
+
+            if(slow==fast){
+                slow= head;
+            
+            while(slow != fast){
+                fast= fast.next;
+                slow= slow.next;
             }
-           
+            return slow;
+            }
         }
-         return 0;
+        return null;
+        
     }
 }
