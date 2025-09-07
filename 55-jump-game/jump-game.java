@@ -1,8 +1,8 @@
 class Solution {
     public boolean canJump(int[] nums) {
-        if(nums[0]==0 && nums.length ==1){
-            return true;
-        }
+        // if(nums[0]==0 && nums.length ==1){
+        //     return true;
+        // }
 
         int maxpower =0;
 
